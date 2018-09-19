@@ -16,7 +16,7 @@ var express    = require("express"),
     methodOverride = require("method-override")
 
     // seedDB();
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect(process.env.MONGODB_URI);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
