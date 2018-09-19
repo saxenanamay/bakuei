@@ -1,0 +1,98 @@
+<% include partials/header %>
+<div class="events">
+    <div class="events-header">
+        <div>
+            <div class="events-image">
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="card-container manual-flip col-lg-4 col-md-6 col-sm-12 ">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="https://i.ytimg.com/vi/GMCqTeBPVoo/maxresdefault.jpg"/>
+                        </div>
+                        <div class="user">
+                            <img class="rounded-circle" src="/img/sample.png"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">Jaipur</h3>
+                                <p class="profession">The pink city</p>
+                                <p class="text-center">"Capital of Rajasthan <br>Beautiful forts <br>Budget friendly"</p>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple" onclick="rotateCard(this)">
+                                    <i class="fa fa-mail-forward"></i> Know more
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">"Widely renowed as the most beautiful city of rajasthan, Jaipur is a must visit   "</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center">Package Description</h4>
+                                <p class="text-center">7 days 8 nights tour including lodging and food. Covers all major tourist attractions such as Hawa Mehel, GIT College Sitapura, etc</p>
+
+                                <div class="stats-container">
+                                    <div class="stats">
+                                        <h4>235</h4>
+                                        <p>
+                                            Booked
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>114</h4>
+                                        <p>
+                                            Favorited
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>$999</h4>
+                                        <p>
+                                            Only
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                                <i class="fa fa-reply"></i> Back
+                            </button>
+                            <div class="social-links text-center">
+                                <a href="http://google.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://google.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://google.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+    </div>
+    </div>
+    <script type="text/javascript">
+        $().ready(function(){
+            $('[rel="tooltip"]').tooltip();
+    
+        });
+    
+        function rotateCard(btn){
+            var $card = $(btn).closest('.card-container');
+            console.log($card);
+            if($card.hasClass('hover')){
+                $card.removeClass('hover');
+            } else {
+                $card.addClass('hover');
+            }
+        }
+    </script>
+</div>
+<% include partials/footer %>

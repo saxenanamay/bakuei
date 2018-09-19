@@ -1,0 +1,20 @@
+.edit-area-alt{
+    display: none;
+    margin: 0;
+}
+#alt-edit{
+    padding: 0;
+}
+
+.events-header{
+    /* background-color: rgb(98,101,103); */
+}
+
+.events-image{
+    background-image: url(/img/fest1.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 70vh;
+    margin: -24px auto 50px auto;
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>YelpCamp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/rotating-card.css" rel="stylesheet" />
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/main.css">
+
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+                <a class="navbar-brand" href="/">Bakuei</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <!-- <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul> -->
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a href="events" class="nav-link">Events</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="http://localhost:3000" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="about" class="nav-link">About us</a>
+                    </li>
+  
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0 ml-auto" action="/search" method="POST">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                  <ul class="navbar-nav">
+                  <% if(!currentUser){ %>
+                    <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+                    <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+                  <% } else { %>
+                    <li class="nav-item"><a href="#" class="nav-link">Welcome, <%= currentUser.username %>!</a></li>
+                    <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
+                  <% } %>
+                  </ul>
+                </div>
+              </nav>
+          
+    
+    
+ 
