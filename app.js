@@ -275,6 +275,7 @@ function checkCommentOwner(req,res,next){
         })
     }
 }
-app.listen(3001,function(){
+var port = process.env.PORT || 3000;
+app.listen(port,"0.0.0.0",function(){
     console.log("its running");
 });
