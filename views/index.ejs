@@ -1,32 +1,46 @@
 <% include partials/header %>
+<header class="jumbotron">
+    <div class="container">
+    <h1 class="jumbotext">Welcome to Bakuei!</h1>
+    <p class="jumbotext">Browse our top rated campgrounds curated by thousands of passionate campers around the world.</p>
+    <p>
+        <a href="/index/new"  class="btn btn-primary btn-lg">Add a new campground</a>
+    </p>
+    </div>
+</header>
 <div class="container">
-    <header class="jumbotron">
-        <div class="container">
-        <h1>Welcome to Bakuei!</h1>
-        <p>Browse our top rated campgrounds curated by thousands of passionate campers around the world.</p>
-        <p>
-            <a href="/index/new"  class="btn btn-primary btn-lg">Add a new campground</a>
-        </p>
-        </div>
-    </header>
 
     <div class="row text-center">
 
         <% campgrounds.forEach(function(cg){ %>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex align-items-stretch">
+            <!-- <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex align-items-stretch">
               <div class="card ">
                 <img class="card-img-top himg" src="<%= cg.image %>">
                 <div class="card-body">
                    <h5 class="card-title"><%= cg.name %></h5>
-                   <!-- <p class="card-text"><%= cg.description %></p> -->
+                   <p class="card-text"><%= cg.description %></p>
                    <p>
                        <a href="/index/<%= cg._id %>" class="btn btn-primary">More info</a>
                    </p>
                 </div>
               </div>
+           </div> -->
+           <div class="col-lg-3 col-md-4 col-sm6- mb-4 d-flex align-items-stretch">
+                <div class="sample-card">
+                    <div class="sample-card-header">
+                        <%= cg.name %>
+                    </div>
+                    <figure class="sample-card-body">
+                        <img class="sample-card-img" src="<%= cg.image %>">
+                        <figcaption class="sample-card-caption">
+                            BITCONNECT<br><br>
+                            <a href="/index/<%= cg._id %>" class="button">More info</a>
+                        </figcaption>
+                    </figure>
+                </div>
            </div>
         <% }); %>
-    
+           
     </div>
 </div>
 <% include partials/footer %>

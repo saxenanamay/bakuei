@@ -16,7 +16,12 @@ var express    = require("express"),
     methodOverride = require("method-override")
 
     // seedDB();
-mongoose.connect(process.env.MONGODB_URI);
+    const option = {
+        socketTimeoutMS: 30000,
+        keepAlive: true,
+        reconnectTries: 30000
+    };
+mongoose.connect("mongodb://localhost/yelp_camp",option);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
@@ -54,11 +59,13 @@ app.post("/index",isLoggedIn,function(req,res){
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
+    var lat = req.body.lat;
+    var long = req.body.long;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newCampground = {name: name, image: image,description: description,author: author};
+    var newCampground = {name: name, image: image,description: description,lat: lat,long: long,author: author};
     Campground.create(newCampground,function(err,newcg){
         if(err){
             console.log(err);
@@ -177,6 +184,9 @@ app.put("/index/:id/edit",checkOwner, function(req,res){
             cg.name = req.body.name;
             cg.image = req.body.image;
             cg.description = req.body.description;
+            cg.lat = 26.912434;
+            cg.long = 75.787270;
+            cg.price = 200;
             cg.save();
             res.redirect("/index/"+req.params.id);
         }
@@ -202,6 +212,7 @@ app.put("/index/:id/:cid",checkCommentOwner, function(req,res){
         else{
             res.redirect("/index/"+req.params.id);
         }
+
     })
 })
 

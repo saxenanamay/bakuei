@@ -1,3 +1,137 @@
+
+#map {
+    height: 426px;
+    max-width: 690px;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    /* font-family: Montserrat; */
+    font-family: 'Cedarville Cursive';
+    background-color: #000;
+}
+*::selection{
+    color: #fff;
+    background-color: #FFC200;
+}
+.list-group-item{
+    background: transparent;
+    color: #F05A28;
+    border-color: #F05A28;
+}
+.comment-card-header{
+    background-color: #F05A28;
+    color: #fff;
+}
+.comment-box, .comment-box:active, .comment-box:focus{
+    border: 1px solid #F05A28;
+    background-color: transparent;
+    color: #F05A28;
+    box-shadow: none;
+    outline: none;
+    font-size: 20px;
+}
+.comment-box a{
+    color: #137BC2;
+}
+.lead{
+    color: #F05A28;
+}
+.map{
+    margin: 0px auto;
+    height: 426px;
+    max-width: 690px;
+    background-color: red;
+}
+
+.front{
+    z-index: 2;
+    opacity: 1;
+}
+.back{
+    z-index: 1;
+    opacity: 0;
+    display: none;
+}
+img{
+    width: 100%;
+}
+.card-img-top{
+    border-bottom: 1px solid #F05A28;
+}
+.list-group-item.active{
+    border-color: #F05A28;
+    background-color: #F05A28;
+    color: #fff;
+}
+.big-card{
+    border: 1px solid #F05A28;
+    border-radius: 4px;
+}
+.cgname{
+    color: #F05A28;
+    font-weight: 600;
+}
+.cgname:hover, .cgname:focus{
+    color: #F05A28;
+    text-decoration: none;
+}
+.cgdesc{
+    color: #fff;
+}
+.btn-submit{
+    color: #23AA5A;
+    border: 1px solid #23AA5A;
+    border-radius: 4px;
+    background-color: transparent;
+}
+.btn-submit:hover,.btn-submit:focus{
+    color: #fff;
+    border: 1px solid #23AA5A;
+    background-color: #23AA5A;
+    box-shadow: none;
+    text-decoration: none;
+}
+.btn-edit{
+    color: #FFC200;
+    border: 1px solid #FFC200;
+    border-radius: 20px;
+    background-color: transparent;
+}
+.btn-edit:hover,.btn-edit:focus{
+    color: #fff;
+    border: 1px solid #FFC200;
+    background-color: #FFC200;
+    border-radius: 20px;
+    box-shadow: none;
+    text-decoration: none;
+}
+.btn-delete{
+    color: #DE3636;
+    background-color: transparent;
+    border: 1px solid #DE3636;
+    border-radius: 20px;
+}
+.btn-delete:hover,.btn-delete:focus{
+    color: #fff;
+    border: 1px solid #DE3636;
+    background-color: #DE3636;
+    border-radius: 20px;
+    box-shadow: none;
+    text-decoration: none;
+}
+hr{
+    border-bottom: 1px solid #fff;
+}
+.jumbotron {
+    height: 80vh;
+    padding-top: 10rem;
+    margin-top: -1.5rem;
+}
+
 .edit-area-alt{
     display: none;
     margin: 0;
@@ -5,11 +139,179 @@
 #alt-edit{
     padding: 0;
 }
-
-.events-header{
-    /* background-color: rgb(98,101,103); */
+.navbar{
+    background: linear-gradient(to right, #F05A28, #E80A89);
+    z-index: 3;
+    height: 40px;
 }
 
+.jumbotron{
+    background-image: linear-gradient(to right bottom, rgba(240, 90, 40, 0.2), rgba(232,10,137, 0.2)), url('/img/final.gif');
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+}
+
+.sample-card{
+    width: 100%;
+    border-radius: 4px;
+    transition: 0.2s all;
+    height: 330px;
+}
+.sample-card-header{
+    position: absolute;
+    top: 80%;
+    right: 10%;
+    color: white;
+    font-weight: 500;
+}
+.sample-card-body{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.sample-card-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.sample-card-caption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 20%);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+}
+.sample-card:hover{
+    border: 2px solid #FFC200;
+}
+.sample-card:hover .sample-card-img{
+    filter: blur(3px) brightness(80%);
+
+}
+
+.sample-card:hover .sample-card-caption{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+}
+.jumbotron .btn-primary{
+    background-color: transparent;
+    border-color: #ffffff;
+    width: 70%;
+    max-width: 330px;
+}
+.jumbotron .btn-primary:hover{
+    background-color: #FFC200;
+    border-color: #FFC200;
+}
+
+.form-container{
+    border-radius: 4px;
+    color: #fff;
+    width: 50%;
+    position: absolute;
+    top: 27%;
+    left: 26%;
+    z-index: 2;
+}
+.signup-form-container{
+    border-radius: 4px;
+    color: #fff;
+    width: 50%;
+    position: absolute;
+    top: 18%;
+    left: 26%;
+    z-index: 2;
+}
+
+.form-login-button{
+    border: 2px solid #fff;
+    border-radius: 20px;
+    background-color: transparent;
+    color: #fff;
+}
+.form-login-button:hover{
+    background-color: #fff;
+    color: #F05A28;
+}
+.form-login-button:focus{
+    outline: none;
+    box-shadow: none;
+}
+.login-field{
+    width: 50%;
+    margin: 5% auto;
+    background-color: transparent;
+    border-radius: 20px;
+    border-color: #fff;
+    color: #fff;
+    min-width: 200px;
+}
+.login-field::placeholder{
+    color: #fff;
+}
+.login-field:focus{
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+.navbar-light .navbar-brand{
+    font-weight: 100;
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: white;
+
+}
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+}
+
+.btn-outline-success{
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 20px;
+    height: 25px;
+    padding-bottom: 21px;
+}
+
+.btn-outline-success:hover{
+    color: #FFC200;
+    background: transparent;
+    border-color: #FFC200;
+}
+
+.button{
+    border: 1px solid #FFC200;
+    border-radius: 20px;
+    border-color: #FFC200;
+    background-color: transparent;
+    color: #FFC200;
+    padding: 5px 5px;
+}
+
+.button:hover{
+    color: white;
+    background-color: #FFC200;
+    text-decoration: none;
+}
+#navsearch{
+    border-radius: 20px;
+    border-color: #ffffff;
+    height: 25px;
+}
+
+#navsearch:focus{
+    outline: none;  
+    box-shadow: none;
+}
 .events-image{
     background-image: url(/img/fest1.jpg);
     background-size: cover;
@@ -18,3 +320,17 @@
     margin: -24px auto 50px auto;
 }
 
+/* TEST */
+canvas {
+    max-width: 500px;
+    max-height: 500px;
+    position: absolute;
+    top: 15%;
+    left: 32%;
+    z-index: 1;
+  }
+  
+  #myCanvas {
+    display: none;
+    background-color: black;
+  }

@@ -1,11 +1,15 @@
 <% include partials/header %>
-
-<h1>Sign Up</h1>
-
+<canvas id="myCanvas" width="200" height="200"></canvas>
+<div class="container text-center signup-form-container">
 <form action="/register" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Sign Up</button>
+    <h1>Sign Up</h1>
+    <input class="form-control login-field" type="text" name="username" placeholder="username">
+    <input class="form-control login-field" type="password" name="password" placeholder="password">
+    <input class="form-control login-field" type="text" name="city" placeholder="city">
+    <input class="form-control login-field" type="text" name="state" placeholder="state">
+    <input class="form-control login-field" type="text" name="country" placeholder="country">
+    <button class="form-login-button">Sign Up</button>
 </form>
+</div>
 
 <% include partials/footer %>
