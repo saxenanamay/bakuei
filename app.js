@@ -21,7 +21,8 @@ var express    = require("express"),
         keepAlive: true,
         reconnectTries: 30000
     };
-mongoose.connect("mongodb://localhost/yelp_camp",option);
+// mongoose.connect("mongodb://localhost/yelp_camp",option);
+mongoose.connect("mongodb://bootbox:bootbox123@ds119853.mlab.com:19853/yelp_camp",option)
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
