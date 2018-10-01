@@ -48,11 +48,11 @@ body{
 }
 
 .front{
-    z-index: 2;
+    /* z-index: 2; */
     opacity: 1;
 }
 .back{
-    z-index: 1;
+    /* z-index: 1; */
     opacity: 0;
     display: none;
 }
@@ -142,7 +142,8 @@ hr{
 .navbar{
     background: linear-gradient(to right, #F05A28, #E80A89);
     z-index: 3;
-    height: 40px;
+    padding: 0 16px;
+    /* height: 40px; */
 }
 
 .jumbotron{
@@ -217,7 +218,7 @@ hr{
     position: absolute;
     top: 27%;
     left: 26%;
-    z-index: 2;
+    /* z-index: 2; */
 }
 .signup-form-container{
     border-radius: 4px;
@@ -226,7 +227,7 @@ hr{
     position: absolute;
     top: 18%;
     left: 26%;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .form-login-button{
@@ -269,6 +270,7 @@ hr{
     color: white;
 
 }
+
 .navbar-light .navbar-nav .nav-link{
     color: white;
 }
@@ -327,8 +329,11 @@ canvas {
     position: absolute;
     top: 15%;
     left: 32%;
-    z-index: 1;
+    z-index: -1;
   }
+.blob{
+    margin: 20px auto;
+}
   
   #myCanvas {
     display: none;
