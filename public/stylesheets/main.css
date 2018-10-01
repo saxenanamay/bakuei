@@ -146,7 +146,7 @@ hr{
 }
 
 .jumbotron{
-    background-image: linear-gradient(to right bottom, rgba(240, 90, 40, 0.2), rgba(232,10,137, 0.2))
+    background-image: linear-gradient(to right bottom, rgba(240, 90, 40, 0.2), rgba(232,10,137, 0.2)), url('/img/final.gif');
     background-size: cover;
     color: #ffffff;
     text-align: center;
