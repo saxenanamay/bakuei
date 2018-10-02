@@ -10,8 +10,9 @@ html, body {
 }
 body{
     /* font-family: Montserrat; */
-    font-family: 'Cedarville Cursive';
+    font-family: 'Raleway';
     background-color: #000;
+    font-weight: 200;
 }
 *::selection{
     color: #fff;
@@ -281,7 +282,7 @@ hr{
     border-color: #ffffff;
     border-radius: 20px;
     height: 25px;
-    padding-bottom: 21px;
+    padding-top: 0;
 }
 
 .btn-outline-success:hover{
