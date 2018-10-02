@@ -206,6 +206,8 @@ hr{
     border-color: #ffffff;
     width: 70%;
     max-width: 330px;
+    white-space: normal;
+
 }
 .jumbotron .btn-primary:hover{
     background-color: #FFC200;
