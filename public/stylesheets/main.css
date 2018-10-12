@@ -11,12 +11,12 @@ html, body {
 body{
     /* font-family: Montserrat; */
     font-family: 'Raleway';
-    background-color: #000;
+    background-color: #f7f7f7;
     font-weight: 200;
 }
 *::selection{
     color: #fff;
-    background-color: #FFC200;
+    background-color: rgba(40, 180, 133, 0.8);
 }
 .list-group-item{
     background: transparent;
@@ -141,15 +141,14 @@ hr{
     padding: 0;
 }
 .navbar{
-    background: linear-gradient(to right, #F05A28, #E80A89);
+    background: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8));
     z-index: 3;
     padding: 0 16px;
     /* height: 40px; */
 }
 
 .jumbotron{
-    background-image: linear-gradient(to right bottom, rgba(240, 90, 40, 0.2), rgba(232,10,137, 0.2)), url('/img/final.gif');
-    background-size: cover;
+    background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.3), rgba(40, 180, 133, 0.3)), url('/img/final.gif');    background-size: cover;
     color: #ffffff;
     text-align: center;
 }
@@ -190,7 +189,7 @@ hr{
     backface-visibility: hidden;
 }
 .sample-card:hover{
-    border: 2px solid #FFC200;
+    outline: 10px solid #FFC200;
 }
 .sample-card:hover .sample-card-img{
     filter: blur(3px) brightness(80%);
@@ -333,6 +332,7 @@ canvas {
     top: 15%;
     left: 32%;
     z-index: -1;
+    border-radius: 20px;
   }
 .blob{
     margin: 20px auto;

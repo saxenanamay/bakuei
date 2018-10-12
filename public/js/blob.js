@@ -4,14 +4,14 @@ context.rect(0, 0, 800, 800);
 // add linear gradient
 var grd = context.createLinearGradient(0, 0, 900, 900);
 // light blue
-grd.addColorStop(0, '#F15A28');   
+grd.addColorStop(0, 'rgba(85, 197, 122, 0.8)');   
 // dark blue
-grd.addColorStop(1, '#E80A89');
+grd.addColorStop(1, 'rgba(40, 180, 133, 0.8)');
 context.fillStyle = grd;
 context.fill();
 
 
-var app = new PIXI.Application(800, 800, { antialias: true, backgroundColor: 0x000000});
+var app = new PIXI.Application(800, 800, { antialias: true, backgroundColor: 0xf7f7f7});
 document.body.appendChild(app.view);
 
 // app.stage.interactive = true;
