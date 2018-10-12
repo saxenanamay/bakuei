@@ -20,17 +20,17 @@ body{
 }
 .list-group-item{
     background: transparent;
-    color: #F05A28;
-    border-color: #F05A28;
+    color: rgba(40, 180, 133, 0.8);
+    border-color: rgba(40, 180, 133, 0.8);
 }
 .comment-card-header{
-    background-color: #F05A28;
+    background-color: rgba(40, 180, 133, 0.8);
     color: #fff;
 }
 .comment-box, .comment-box:active, .comment-box:focus{
-    border: 1px solid #F05A28;
+    border: 1px solid rgba(40, 180, 133, 0.8);
     background-color: transparent;
-    color: #F05A28;
+    color: rgba(40, 180, 133, 0.8);
     box-shadow: none;
     outline: none;
     font-size: 20px;
@@ -39,7 +39,7 @@ body{
     color: #137BC2;
 }
 .lead{
-    color: #F05A28;
+    color: rgba(40, 180, 133, 0.8);
 }
 .map{
     margin: 0px auto;
@@ -61,27 +61,27 @@ img{
     width: 100%;
 }
 .card-img-top{
-    border-bottom: 1px solid #F05A28;
+    border-bottom: 1px solid rgba(40, 180, 133, 0.8);
 }
 .list-group-item.active{
-    border-color: #F05A28;
-    background-color: #F05A28;
+    border-color: rgba(40, 180, 133, 0.8);
+    background-color: rgba(40, 180, 133, 0.8);
     color: #fff;
 }
 .big-card{
-    border: 1px solid #F05A28;
+    border: 1px solid rgba(40, 180, 133, 0.8);
     border-radius: 4px;
 }
 .cgname{
-    color: #F05A28;
+    color: rgba(40, 180, 133, 0.8);
     font-weight: 600;
 }
 .cgname:hover, .cgname:focus{
-    color: #F05A28;
+    color: rgba(40, 180, 133, 0.8);
     text-decoration: none;
 }
 .cgdesc{
-    color: #fff;
+    color: rgba(40, 180, 133, 0.8);
 }
 .btn-submit{
     color: #23AA5A;
@@ -181,7 +181,7 @@ hr{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(50%, 20%);
+    transform: translate(-50%, 20%);
     color: #fff;
     text-align: center;
     opacity: 0;
@@ -240,7 +240,7 @@ hr{
 }
 .form-login-button:hover{
     background-color: #fff;
-    color: #F05A28;
+    color: rgba(40, 180, 133, 0.8);
 }
 .form-login-button:focus{
     outline: none;

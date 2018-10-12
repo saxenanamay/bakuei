@@ -185,8 +185,6 @@ app.put("/index/:id/edit",checkOwner, function(req,res){
             cg.name = req.body.name;
             cg.image = req.body.image;
             cg.description = req.body.description;
-            cg.lat = 26.912434;
-            cg.long = 75.787270;
             cg.price = 200;
             cg.save();
             res.redirect("/index/"+req.params.id);

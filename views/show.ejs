@@ -110,9 +110,9 @@
                     </div>
                     <% if(currentUser&&(currentUser.id==comment.author.id)){ %>
                         <div class="card-footer">
-                            <a class="btn btn-warning" id="comment-edit" data-toggle="modal" data-target="#EditModal">Edit</a>
+                            <a class="btn btn-edit" id="comment-edit" data-toggle="modal" data-target="#EditModal">Edit</a>
                             <form action="/index/<%=campground._id%>/<%=comment._id%>?_method=DELETE" method="POST" style="display: inline">
-                                <button class="btn btn-danger" href="#" >Delete</button>
+                                <button class="btn btn-delete" href="#" >Delete</button>
                             </form>
                         </div>
                     <% }%>
