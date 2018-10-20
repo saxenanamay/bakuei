@@ -19,7 +19,7 @@
                     <p class="cgdesc"><%= campground.description %></p>
                     <hr>
                     <p><em class="cgdesc">Submitted by <%= campground.author.username %></em></p>
-                    <% if(currentUser&&(currentUser.id==campground.author.id)){ %>
+                    <% if((currentUser && (currentUser.id==campground.author.id)) || (currentUser && currentUser.isAdmin)){ %>
                     <a class="btn btn-edit" href="/index/<%=campground._id%>/edit">Edit</a>
                     <button type="button" class="btn btn-delete" data-toggle="modal" data-target="#deleteModal">
                         Delete
@@ -108,7 +108,7 @@
                             </form>
                         </div>
                     </div>
-                    <% if(currentUser&&(currentUser.id==comment.author.id)){ %>
+                    <% if(currentUser&&(currentUser.id==comment.author.id) || (currentUser && currentUser.isAdmin)){ %>
                         <div class="card-footer">
                             <a class="btn btn-edit" id="comment-edit" data-toggle="modal" data-target="#EditModal">Edit</a>
                             <form action="/index/<%=campground._id%>/<%=comment._id%>?_method=DELETE" method="POST" style="display: inline">
@@ -161,7 +161,7 @@
 
   </script>
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdUIUKnJ9M2TArsF-xpiPutgwJPgHkqEE&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU756sWMN8Onzej1OPJSCqlwHGi6QYHnQ&callback=initMap">
 </script>
 
 

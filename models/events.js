@@ -4,13 +4,11 @@ var eventSchema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
-    price: String,
-    comments: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment"
-        }
-    ],
+    longDescription: String, 
+    duration: String,
+    rating: String,
+    price: String
+
 });
 
 module.exports = mongoose.model("Event",eventSchema);

@@ -7,9 +7,13 @@ var express    = require("express"),
     Admin      = require("./models/admin"),
     Campground = require("./models/campground"),
     Comment    = require("./models/comment"),
-    Event      = require("./models/events"),
+    Events      = require("./models/events"),
     passport   = require("passport"),
   LocalStrategy= require("passport-local"),
+    async      = require("async"),
+    nodemailer = require("nodemailer"),
+    crypto     = require("crypto"),
+    flash      = require("connect-flash"),
     // Comment    = require("./models/comment"),
     // User       = require("./models/user"),
     seedDB     = require("./seeds");
@@ -114,7 +118,14 @@ app.post("/index/:id/newComment",isLoggedIn,function(req,res){
 })
 
 app.get("/events",function(req,res){
-    res.render("events");
+    Events.find({},function(err, event){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("events",{events: event});
+        }
+    });
 });
 
 app.post("/search",function(req,res){
@@ -138,7 +149,11 @@ app.get("/register",function(req,res){
     res.render("register");
 });
 app.post("/register",function(req,res){
-    User.register(new User({username: req.body.username}),req.body.password,function(err,user){
+    var newUser = new User({username: req.body.username, email: req.body.email});
+    if(req.body.adminCode === 'zxcvbnm'){
+        newUser.isAdmin = true;
+    }
+    User.register(newUser,req.body.password,function(err,user){
         if(err){
             console.log(err);
             return res.render("register");
@@ -165,6 +180,118 @@ app.get("/logout",function(req,res){
     res.redirect("/index");
 });
 
+app.get("/forgot",function(req,res){
+    res.render("forgot");
+});
+
+app.post("/forgot",function(req,res){
+    async.waterfall([
+        function(done) {
+            crypto.randomBytes(20, function(err,buf){
+                var token= buf.toString('hex');
+                done(err,token);
+            });
+        },
+        function(token, done) {
+            User.findOne({email: req.body.email}, function(err,user){
+                if(!user){
+                    // alert("No user exists with specified email address.");
+                    return res.redirect("/forgot");
+                }
+                user.resetPasswordToken= token;
+                user.resetPasswordExpires= Date.now() + 36000000;
+
+                user.save(function(err){
+                    done(err,token,user);
+                });
+            });
+        },
+        function(token,user,data) {
+            var smtpTransport= nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'hatofperfection@gmail.com',
+                    pass: 'h@tofperfection'
+                }
+            });
+            var mailOptions= {
+                to: user.email,
+                from: 'hatofperfection@gmail.com',
+                subject: 'bakuei password reset',
+                text: 'Follow this link to reset your password. It will expire within 1 hour.\n'+
+                      'http://'+req.headers.host+'/reset/'+token+'\n\n'
+            };
+            smtpTransport.sendMail(mailOptions,function(err){
+                // alert("Password reset email has been sent to the requested email address.");
+                // done(err,'done');
+                res.redirect("sent");
+            });
+        }
+    ], function(err){
+        if(err) return next(err);
+        res.redirect('/forgot');
+    })
+});
+
+app.get("/reset/:token",function(req,res){
+    User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now()}}, function(err,user){
+        if(!user){
+            return res.redirect("/forgot");
+        }
+        res.render('reset', {token: req.params.token});
+    });
+});
+
+app.post("/reset/:token",function(req,res){
+    async.waterfall([
+        function(done) {
+            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now()}}, function(err,user){
+                if(!user){
+                    // req.flash('error', 'Invalid or expired token!');
+                    return res.redirect("back");
+                }
+                if(req.body.password==req.body.confirm){
+                    user.setPassword(req.body.password, function(err){
+                        user.resetPasswordExpires= undefined;
+                        user.resetPasswordToken= undefined;
+
+                        user.save(function(err){
+                            req.logIn(user,function(err){
+                                done(err,user);
+                            });
+                        });
+                    })
+                } else {
+                    // req.flash("error", "Passwords do not match");
+                    return res.redirect('back');
+                }
+            });
+        },
+        function(user,done){
+            var smtpTransport = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'hatofperfection@gmail.com',
+                    pass: 'h@tofperfection'
+                }
+            });
+            var mailOptions = {
+                to: user.email,
+                from: 'hatofperfection@gmail.com',
+                subject: 'Your password has been changed',
+                text: 'Hello,\n\n'+
+                      'This is a confirmation that the password for your account has just been changed'
+            };
+            smtpTransport.sendMail(mailOptions, function(err){
+                // req.flash("success", "Success! Your password has been successfully changed!");
+                done(err);
+            });
+        }
+    ], function(err){
+        res.redirect("/index");
+    });
+});
+
 app.get("/index/:id/edit",checkOwner, function(req,res){
     Campground.findById(req.params.id,function(err,cg){
         if(err){
@@ -175,7 +302,9 @@ app.get("/index/:id/edit",checkOwner, function(req,res){
         }
     });
 });
-
+app.get("/sent",function(req,res){
+    res.render("sent");
+})
 app.put("/index/:id/edit",checkOwner, function(req,res){
     Campground.findById(req.params.id,function(err,cg){
         if(err){
@@ -245,7 +374,7 @@ function checkOwner(req,res,next){
             if(err){
                 res.redirect("/index");
             } else {
-                if(cg.author.id.equals(req.user._id)){
+                if(cg.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();
                 }
                 else{
@@ -264,7 +393,7 @@ function checkCommentOwner(req,res,next){
             if(err){
                 res.redirect("back");
             } else {
-                if(com.author.id.equals(req.user._id)){
+                if(com.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();
                 } else {
                     res.redirect("back");

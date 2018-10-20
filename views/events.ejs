@@ -8,76 +8,78 @@
         </div>
     </div>
     <div class="container">
-    <div class="row">
-        <div class="card-container  col-lg-4 col-md-6 col-sm-12 ">
-                <div class="card">
-                    <div class="front">
-                        <div class="cover">
-                            <img src="https://i.ytimg.com/vi/GMCqTeBPVoo/maxresdefault.jpg"/>
-                        </div>
-                        <div class="user">
-                            <img class="rounded-circle" src="/img/sample.png"/>
-                        </div>
-                        <div class="content">
-                            <div class="main">
-                                <h3 class="name">Jaipur</h3>
-                                <p class="profession">The pink city</p>
-                                <p class="text-center">"Capital of Rajasthan <br>Beautiful forts <br>Budget friendly"</p>
-                            </div>
-                            <div class="footer">
-                                <button class="btn btn-simple" onclick="rotateCard(this)">
-                                    <i class="fa fa-mail-forward"></i> Know more
-                                </button>
-                            </div>
-                        </div>
-                    </div> <!-- end front panel -->
-                    <div class="back">
-                        <div class="header">
-                            <h5 class="motto">"Widely renowed as the most beautiful city of rajasthan, Jaipur is a must visit   "</h5>
-                        </div>
-                        <div class="content">
-                            <div class="main">
-                                <h4 class="text-center">Package Description</h4>
-                                <p class="text-center">7 days 8 nights tour including lodging and food. Covers all major tourist attractions such as Hawa Mehel, GIT College Sitapura, etc</p>
-
-                                <div class="stats-container">
-                                    <div class="stats">
-                                        <h4>235</h4>
-                                        <p>
-                                            Booked
-                                        </p>
+        <div class="row">
+            <% events.forEach(function(event){ %>
+                <div class="card-container col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="frontEventsCard" style="background-image: url('<%= event.image %>');">
+                                <!-- <div class="cover">
+                                    <img src="img/mount.jpg"/>
+                                </div> -->
+                                <!-- <div class="user">
+                                    <img class="img-circle" src="img/sample.png"/>
+                                </div> -->
+                                <div class="content" style="margin: 30% auto; background-color: rgba(0,0,0,0.7)">
+                                    <div class="main">
+                                        <h3 class="name" style="color: #fff"><%= event.name %></h3>
+                                        <p class="profession" style="color: rgba(255, 255, 255, 0.534)"><%= event.description %></p>
+               
+                                        <p class="text-center" style="color: rgba(255, 255, 255, 0.247)">"Wow what a nice place frands"</p>
                                     </div>
-                                    <div class="stats">
-                                        <h4>114</h4>
-                                        <p>
-                                            Favorited
-                                        </p>
-                                    </div>
-                                    <div class="stats">
-                                        <h4>$999</h4>
-                                        <p>
-                                            Only
-                                        </p>
+                                    <!-- <div class="footer">
+                                        <div class="rating">
+                                            <i class="fa fa-mail-forward"></i> Auto Rotation
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div> <!-- end front panel -->
+                            <div class="backEventsCard">
+                                <div class="header">
+                                    <h5 class="motto">More about <%= event.name %></h5>
+                                </div>
+                                <div class="content">
+                                    <div class="main">
+                                        <h4 class="text-center">Description</h4>
+                                        <p class="text-center"><%= event.longDescription %></p>
+               
+                                        <div class="stats-container">
+                                            <div class="stats">
+                                                <h4><%= event.duration %></h4>
+                                                <p>
+                                                    Days
+                                                </p>
+                                            </div>
+                                            <div class="stats">
+                                                <h4>$<%= event.price %></h4>
+                                                <p>
+                                                    Price
+                                                </p>
+                                            </div>
+                                            <div class="stats">
+                                                <h4><%= event.rating %><i class="fas fa-star"></i></h4>
+                                                <p>
+                                                    Rating
+                                                </p>
+                                            </div>
+                                        </div>
+               
                                     </div>
                                 </div>
+                                <div class="footer">
+                                    <div class="social-links text-center">
+                                        <a href="http://facebook.com" class="facebook"><i class="fab fa-facebook-f fa-fw"></i></a>
+                                        <a href="http://plus.google.com" class="google"><i class="fab fa-google-plus fa-fw"></i></a>
+                                        <a href="http://twitter.com" class="twitter"><i class="fab fa-twitter fa-fw"></i></a>
+                                    </div>
+                                </div>
+                            </div> <!-- end back panel -->
+                        </div> <!-- end card -->
+                    </div> <!-- end card-container -->
+                    <% }); %>
+        </div> <!-- end card-container -->
 
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
-                                <i class="fa fa-reply"></i> Back
-                            </button>
-                            <div class="social-links text-center">
-                                <a href="http://google.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                                <a href="http://google.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
-                                <a href="http://google.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
-                            </div>
-                        </div>
-                    </div> <!-- end back panel -->
-                </div> <!-- end card -->
-            </div> <!-- end card-container -->
     </div>
-    </div>
+</div>
     <script type="text/javascript">
         $().ready(function(){
             $('[rel="tooltip"]').tooltip();
