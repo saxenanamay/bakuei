@@ -8,6 +8,7 @@ var express    = require("express"),
     Campground = require("./models/campground"),
     Comment    = require("./models/comment"),
     Events      = require("./models/events"),
+    expressSanitizer= require("express-sanitizer"),
     passport   = require("passport"),
   LocalStrategy= require("passport-local"),
     async      = require("async"),
@@ -26,7 +27,8 @@ var express    = require("express"),
         reconnectTries: 30000
     };
 // mongoose.connect("mongodb://localhost/yelp_camp",option);
-mongoose.connect("mongodb://bootbox:bootbox123@ds119853.mlab.com:19853/yelp_camp",option)
+mongoose.connect("mongodb://bootbox:bootbox123@ds119853.mlab.com:19853/yelp_camp",option);
+app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
@@ -45,6 +47,14 @@ app.use(function(req, res, next){
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+var blogSchema = new mongoose.Schema({
+    title: String,
+    image: String,
+    body: String,
+    created: {type: Date, default: Date.now}
+});
+
+var Blog = mongoose.model("Blog", blogSchema);
 
 app.get("/",function(req,res){
     res.render("landing");
@@ -353,6 +363,79 @@ app.delete("/index/:id/:cid", checkCommentOwner, function(req,res){
         }
     })
 })
+
+// BLOG
+
+app.get("/blogs",function(req,res){
+    Blog.find({}, function(err,blog){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("blog/index",{blog: blog});
+        }
+    })
+});
+app.get("/blogs/new",function(req,res){
+    res.render("blog/new");
+});
+
+app.post("/blogs", function(req,res){
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    Blog.create(req.body.blog, function(err, blog){
+        if(err){
+            res.render("blog/new");
+        }
+        else{
+            res.redirect("/blogs");
+        }
+    });
+});
+
+app.get("/blogs/:id",function(req,res){
+    Blog.findById(req.params.id, function(err, blog){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            res.render("blog/show", {blog: blog});
+        }
+    });
+});
+
+app.get("/blogs/:id/edit",function(req,res){
+    Blog.findById(req.params.id, function(err, blog){
+        if(err){
+            res.send("ERROROROROR");
+        }
+        else{
+            res.render("blog/edit", {blog: blog});
+        }
+    });
+});
+
+app.put("/blogs/:id", function(req,res){
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, blog){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            res.redirect("/blogs/"+req.params.id);
+        }
+    });
+});
+
+app.delete("/blogs/:id",function(req,res){
+    Blog.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            res.redirect("/blogs");
+        }
+    })
+});
 function isLoggedIn(req,res,next){
     if(req.user){
         next();
