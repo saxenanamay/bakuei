@@ -342,8 +342,17 @@ app.delete("/index/:id/delete",checkOwner, function(req,res){
     })
 });
 
-app.put("/index/:id/:cid",checkCommentOwner, function(req,res){
-    Comment.findByIdAndUpdate(req.params.cid, req.body.comment, function(err, updated){
+app.get("/index/:id/:cid/edit",checkCommentOwner, function(req,res){
+    Campground.findById(req.params.id,function(err,cg){
+        Comment.findById(req.params.cid,function(err,comment){
+            res.render("editComment",{campground: cg, comment: comment});
+        });
+    });
+});
+
+app.put("/index/:id/:cid/edit",checkCommentOwner, function(req,res){
+    newComment = {text: req.body.comment};
+    Comment.findByIdAndUpdate(req.params.cid, newComment, function(err, updated){
         if(err){
             res.redirect("/index");
         }
