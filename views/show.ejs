@@ -93,7 +93,7 @@
                 <!-- <p class="list-group-item" style="padding: 5px 5px;"><em><%= comment.author %> </em>says -<br><%= comment.text %></p> -->
                 <div class="card comment-box" style="margin-bottom: 15px">
                     <div class="card-header comment-card-header">
-                        <p style="margin: 0"><em><%= comment.author.username %> </em>says -<span class="float-right">(10 days ago)</span></p>
+                        <p style="margin: 0"><em><%= comment.author.username %> </em>says -<span class="float-right">(<%= comment.created.toDateString() %>)</span></p>
                     </div>
                     <div class="card-body">
                         <div class="card-text">
