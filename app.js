@@ -40,8 +40,10 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
+app.use(flash());
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.message = req.flash("error");
     next();
 })
 passport.use(new LocalStrategy(User.authenticate()));
@@ -165,7 +167,7 @@ app.post("/register",function(req,res){
     }
     User.register(newUser,req.body.password,function(err,user){
         if(err){
-            console.log(err);
+            req.flash("error","User with given username/email id already exists!!");
             return res.render("register");
         }
         passport.authenticate("local")(req,res,function(){
@@ -205,7 +207,7 @@ app.post("/forgot",function(req,res){
         function(token, done) {
             User.findOne({email: req.body.email}, function(err,user){
                 if(!user){
-                    // alert("No user exists with specified email address.");
+                    req.flash("error", "No such account associated with given email address exists");
                     return res.redirect("/forgot");
                 }
                 user.resetPasswordToken= token;
@@ -257,7 +259,8 @@ app.post("/reset/:token",function(req,res){
         function(done) {
             User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now()}}, function(err,user){
                 if(!user){
-                    // req.flash('error', 'Invalid or expired token!');
+                    console.log("ABA OA!")
+                    req.flash("error", "Invalid or expired token!");
                     return res.redirect("back");
                 }
                 if(req.body.password==req.body.confirm){
@@ -272,7 +275,7 @@ app.post("/reset/:token",function(req,res){
                         });
                     })
                 } else {
-                    // req.flash("error", "Passwords do not match");
+                    req.flash("error", "Passwords do not match");
                     return res.redirect('back');
                 }
             });
