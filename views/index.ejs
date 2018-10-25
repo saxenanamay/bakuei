@@ -6,6 +6,11 @@
     <p>
         <a href="/index/new"  class="btn btn-primary btn-lg">Add a new campground</a>
     </p>
+    <% if(currentUser && currentUser.isAdmin) { %>
+        <p>
+            <a href="/events/new"  class="btn btn-primary btn-lg">Add a new event</a>
+        </p>
+    <% } %>
     </div>
 </header>
 <div class="container">

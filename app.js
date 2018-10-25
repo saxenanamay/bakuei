@@ -140,6 +140,27 @@ app.get("/events",function(req,res){
     });
 });
 
+app.get("/events/new",checkAdmin,function(req,res){
+    res.render("newEvent");
+});
+app.post("/events/new",checkAdmin,function(req,res){
+    var newEvent = {name: req.body.name,
+                    image: req.body.image,
+                    description: req.body.description,
+                    longDescription: req.body.longDescription, 
+                    duration: req.body.duration, 
+                    rating: req.body.rating, 
+                    price: req.body.price};
+    Events.create(newEvent,function(err,newevent){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.redirect("/events");
+        }
+    });
+});
+
 app.post("/search",function(req,res){
     var search = req.body.search;
     var regex = new RegExp(search,"i")
@@ -167,7 +188,7 @@ app.post("/register",function(req,res){
     }
     User.register(newUser,req.body.password,function(err,user){
         if(err){
-            req.flash("error","User with given username/email id already exists!!");
+            req.flash("error",err.message);
             return res.render("register");
         }
         passport.authenticate("local")(req,res,function(){
@@ -495,6 +516,16 @@ function checkCommentOwner(req,res,next){
                 }
             }
         })
+    }
+}
+
+function checkAdmin(req,res,next){
+    if(req.isAuthenticated()){
+        if(req.user.isAdmin){
+            next();
+        }
+        else
+            res.redirect("back");
     }
 }
 var port = process.env.PORT || 3000;
