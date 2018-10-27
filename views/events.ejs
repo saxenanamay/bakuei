@@ -22,7 +22,7 @@
                                 <div class="content" style="margin: 30% auto; background-color: rgba(0,0,0,0.7)">
                                     <div class="main">
                                         <h3 class="name" style="color: #fff"><%= event.name %></h3>
-                                        <p class="profession" style="color: rgba(255, 255, 255, 0.534)"><%= event.description %></p>
+                                        <p class="profession" style="color: rgba(255, 255, 255, 0.534)"><%= event.description.substring(0,100) %></p>
                
                                         <p class="text-center" style="color: rgba(255, 255, 255, 0.247)">"Wow what a nice place frands"</p>
                                     </div>
@@ -40,7 +40,7 @@
                                 <div class="content">
                                     <div class="main">
                                         <h4 class="text-center">Description</h4>
-                                        <p class="text-center"><%= event.longDescription %></p>
+                                        <p class="text-center"><%= event.longDescription.substring(0,150) %>...</p>
                
                                         <div class="stats-container">
                                             <div class="stats">
