@@ -8,6 +8,7 @@ var express    = require("express"),
     Campground = require("./models/campground"),
     Comment    = require("./models/comment"),
     Events      = require("./models/events"),
+    Booking    = require("./models/booking"),
     expressSanitizer= require("express-sanitizer"),
     passport   = require("passport"),
   LocalStrategy= require("passport-local"),
@@ -150,6 +151,7 @@ app.post("/events/new",checkAdmin,function(req,res){
                     longDescription: req.body.longDescription, 
                     duration: req.body.duration, 
                     rating: req.body.rating, 
+                    availability: req.body.qty,
                     price: req.body.price};
     Events.create(newEvent,function(err,newevent){
         if(err){
@@ -158,6 +160,45 @@ app.post("/events/new",checkAdmin,function(req,res){
         else{
             res.redirect("/events");
         }
+    });
+});
+
+app.get("/events/:id",function(req, res){
+    Events.findById(req.params.id, function(err, result){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("eventShow", {event: result});
+        }
+    });
+});
+
+app.post("/booking/:id",isLoggedIn,function(req,res){
+    Events.findById(req.params.id,function(err,result){
+        if(result.availability>=req.body.qty){
+            result.availability= result.availability-req.body.qty;
+            result.save();
+        var pr= req.body.qty*result.price;
+        var newBooking={
+            title: result.name,
+            qty: req.body.qty,
+            price: pr,
+            booker: {id: req.user._id,
+                     username: req.user.username
+            },
+        };
+        Booking.create(newBooking,function(err,newbook){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("booking",{booking: newbook});
+            }
+        });
+    }else{
+        res.redirect("back");
+    }
     });
 });
 

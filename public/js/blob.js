@@ -11,7 +11,7 @@ context.fillStyle = grd;
 context.fill();
 
 
-var app = new PIXI.Application(800, 800, { antialias: true, backgroundColor: 0xf7f7f7});
+var app = new PIXI.Application(800, 800, { antialias: true, backgroundColor: 0xffffff});
 document.body.appendChild(app.view);
 
 // app.stage.interactive = true;

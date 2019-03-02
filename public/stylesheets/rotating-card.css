@@ -168,7 +168,7 @@
 
 .card .stats-container{
 	width: 100%;
-	margin-top: 50px;
+	/* margin-top: 50px; */
 }
 .card .stats{
 	display: block;
@@ -182,6 +182,9 @@
 }
 .card .stats:last-child{
 	border-left: 1px solid #EEEEEE;
+}
+.card .stats:nth-child(2){
+    
 }
 .card .stats h4{
 	font-weight: 300;

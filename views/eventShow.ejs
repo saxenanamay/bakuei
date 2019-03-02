@@ -1,0 +1,44 @@
+<% include partials/header %>
+<div class="eventWrapper">
+        <p>.</p>
+
+    <div class="eventContainer">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="eventImage">
+                    <img src="<%= event.image %>" alt="">
+                </div>
+                <div class="eventTitle">
+                    <h1 class="text-center"><%= event.name %></h1>
+                </div>
+                <div class="eventAvailability">
+                    <h5 class="text-center"><%=event.availability%> bookings available</h3>
+                </div>
+            </div>
+            <div class="col-md-4 midcol">
+                <div class="eventDesc">
+                    <p><%= event.longDescription %></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <form action="/booking/<%= event.id%>" class="eventForm text-center" method="POST">
+                    <label for="qty">I want to book for </label>
+                    <select name="qty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    people
+                    <button class="eventBtn text-center">Book!</button>
+                </form>
+                <div class="eventPrice text-center">
+                    <p>($<%= event.price %> per person)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

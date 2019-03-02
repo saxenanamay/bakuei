@@ -40,8 +40,8 @@
                                 <div class="content">
                                     <div class="main">
                                         <h4 class="text-center">Description</h4>
-                                        <p class="text-center"><%= event.longDescription.substring(0,150) %>...</p>
-               
+                                        <p class="text-center"><%= event.longDescription.substring(0,150) %>...<a href="/events/<%= event._id %>">More details</a>
+                                        </p>
                                         <div class="stats-container">
                                             <div class="stats">
                                                 <h4><%= event.duration %></h4>
@@ -50,7 +50,7 @@
                                                 </p>
                                             </div>
                                             <div class="stats">
-                                                <h4>$<%= event.price %></h4>
+                                                <h4><del>$<%= event.price*2 %></del><br>$<%= event.price %></h4>
                                                 <p>
                                                     Price
                                                 </p>

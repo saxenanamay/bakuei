@@ -42,7 +42,8 @@
     font-weight: 400;
     line-height: 1.7;
     color: #777;
-    padding: 3rem; }
+    /* padding: 3rem;  */
+  }
   
   .heading-primary {
     color: #fff;
@@ -354,7 +355,7 @@
   
   .header {
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+    background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.3), rgba(40, 180, 133, 0.3)), url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }

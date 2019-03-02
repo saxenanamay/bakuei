@@ -11,7 +11,7 @@ html, body {
 body{
     /* font-family: Montserrat; */
     font-family: 'Raleway';
-    background-color: #f7f7f7;
+    background-color: #fff;
     font-weight: 200;
 }
 *::selection{
@@ -305,6 +305,65 @@ hr{
     color: white;
     background-color: #FFC200;
     text-decoration: none;
+}
+
+.eventContainer{
+    width: 90%;
+    background-color: rgba(85, 197, 122, 0.4);
+    margin: 7% auto;
+    border-radius: 5px;
+    color: #f7f7f7;
+}
+
+.eventImage{
+    height: 50%;
+    margin: 10px 10px;
+}
+
+.eventTitle{
+    margin-top: 60px;
+}
+.eventDesc{
+    margin: 20px auto;
+}
+.eventForm{
+    margin: 20px auto;
+}
+.eventBtn{
+    display: block;
+    margin: 50px auto;
+}
+.receiptHeader{
+    padding: 20px 40px;
+}
+.receipt-col-1{
+    width: 5%;
+}
+.receipt-col-2{
+
+}
+.receipt-col-3{
+    width: 10%;
+
+}
+.receiptTable{
+    width: 100%;
+}
+.rtHeader{
+    background-color: rgba(57, 70, 65, 0.3);
+}
+.midcol{
+    border-left: #f7f7f7 0.5px solid;
+    border-right: #f7f7f7 0.5px solid;
+}
+
+.eventWrapper{
+    background-image: url(/img/eventbg4.jpg);
+    margin-top: -1.5rem;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #navsearch{
     border-radius: 20px;
