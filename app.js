@@ -16,6 +16,7 @@ var express    = require("express"),
     nodemailer = require("nodemailer"),
     crypto     = require("crypto"),
     flash      = require("connect-flash"),
+    request    = require("request")
     // Comment    = require("./models/comment"),
     // User       = require("./models/user"),
     seedDB     = require("./seeds");
@@ -136,7 +137,11 @@ app.get("/events",function(req,res){
             console.log(err);
         }
         else{
-            res.render("events",{events: event});
+            request('http://staging.api.insider.in/tag/list', function (error, response, body) {
+                var content= JSON.parse(body);
+                res.render("events",{events: event});
+
+        });
         }
     });
 });
