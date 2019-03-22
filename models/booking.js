@@ -12,6 +12,8 @@ var bookingSchema = mongoose.Schema({
     },
     date: {type: Date, default: Date.now},
     price: Number,
+    bookid: String,
+    mrp: Number,
     qty: Number
 });
 

@@ -16,7 +16,8 @@ var express    = require("express"),
     nodemailer = require("nodemailer"),
     crypto     = require("crypto"),
     flash      = require("connect-flash"),
-    request    = require("request")
+    request    = require("request"),
+    shortid    = require("shortid"),
     // Comment    = require("./models/comment"),
     // User       = require("./models/user"),
     seedDB     = require("./seeds");
@@ -184,11 +185,14 @@ app.post("/booking/:id",isLoggedIn,function(req,res){
         if(result.availability>=req.body.qty){
             result.availability= result.availability-req.body.qty;
             result.save();
-        var pr= req.body.qty*result.price;
+        var pr= (req.body.qty*result.price)+(0.1*result.price);
+        var bookingID= shortid.generate();
         var newBooking={
             title: result.name,
             qty: req.body.qty,
             price: pr,
+            mrp: result.price,
+            bookid: bookingID,
             booker: {id: req.user._id,
                      username: req.user.username
             },

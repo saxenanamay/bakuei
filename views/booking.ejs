@@ -111,7 +111,7 @@
                             </td>
                             
                             <td>
-                                Invoice #: 123<br>
+                                Invoice #: <%= booking.bookid %><br>
                                 Created: <%= booking.date %><br>
                             </td>
                         </tr>
@@ -179,8 +179,20 @@
                 </td>
             </tr>
             
-            
-            
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   MRP: <%= booking.mrp %>
+                </td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   Tax: <%= booking.mrp*0.1 %>
+                </td>
+            </tr>
             <tr class="total">
                 <td></td>
                 
