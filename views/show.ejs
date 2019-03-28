@@ -139,16 +139,31 @@
         </div>
     </div>
 </div>
+<script>
+        function initMap() {
+      var mapProp= {
+    //       center:new google.maps.LatLng(<%= campground.lat %>,<%= campground.long %>),
+    //       zoom:20,
+    //   };
+    //   var mrk = {lat: <%= campground.lat %>, lng: <%= campground.long %>};
+    //   var marker = new google.maps.Marker({position: mrk, map: map});
+    //   var map=new google.maps.Map(document.getElementById("map"),mapProp);
+    alert("hobba");
+      }
+    
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU756sWMN8Onzej1OPJSCqlwHGi6QYHnQ&callback=initMap">
+</script>
 <footer class="footer">
     <div class="row">
         <div class="col-lg-6">
             <div class="footer__navigation">
                 <ul class="footer__list">
-                    <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
-                    <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
-                    <li class="footer__item"><a href="#" class="footer__link">Carrers</a></li>
-                    <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
-                    <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
+                        <li class="footer__item"><a href="#comehere" class="footer__link">Contact Us!</a></li>
+                        <li class="footer__item"><a href="/blog" class="footer__link">Blog</a></li>
+                        <li class="footer__item"><a href="/policy" class="footer__link">Privacy policy</a></li>
+                        <li class="footer__item"><a href="/terms" class="footer__link">Terms</a></li>
                 </ul>
             </div>
         </div>
@@ -160,21 +175,8 @@
         </div>
     </div>
 </footer>  
-<script>
-    function initMap() {
-  var mapProp= {
-      center:new google.maps.LatLng(<%= campground.lat %>,<%= campground.long %>),
-      zoom:20,
-  };
-  var mrk = {lat: <%= campground.lat %>, lng: <%= campground.long %>};
-  var marker = new google.maps.Marker({position: mrk, map: map});
-  var map=new google.maps.Map(document.getElementById("map"),mapProp);
-  }
 
-  </script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU756sWMN8Onzej1OPJSCqlwHGi6QYHnQ&callback=initMap">
-</script>
+
 
 
 

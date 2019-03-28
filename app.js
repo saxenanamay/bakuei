@@ -224,6 +224,14 @@ app.post("/search",function(req,res){
     });
 });
 
+app.get("/policy", function(req, res){
+    res.render("policy");
+})
+
+app.get("/terms", function(req, res){
+    res.render("terms");
+})
+
 app.get("/admin",function(req,res){
     res.render("admin");
 })
