@@ -9,6 +9,14 @@
             <button class="form-login-button">Login</button>
             <a href="forgot">Forgot Password?</a>
             <p style="margin-top: 10px">Don't have an account?<a href="register"> Register!</a></p>
+            <script src="https://www.google.com/recaptcha/api.js?render=6Lf19KAUAAAAAI_MGQOq6K1_7RWh1kaq2x3Kyj7p"></script>
+            <script>
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lf19KAUAAAAAI_MGQOq6K1_7RWh1kaq2x3Kyj7p', {action: 'homepage'}).then(function(token) {
+                   
+                });
+            });
+            </script>
         </form>
 </div>
 <% include partials/footer %>
