@@ -317,7 +317,7 @@ app.post("/forgot",function(req,res){
                 service: 'Gmail',
                 auth: {
                     user: 'hatofperfection@gmail.com',
-                    pass: 'h@tofperfection'
+                    pass: process.env.pass,
                 }
             });
             var mailOptions= {
@@ -379,7 +379,7 @@ app.post("/reset/:token",function(req,res){
                 service: 'Gmail',
                 auth: {
                     user: 'hatofperfection@gmail.com',
-                    pass: 'h@tofperfection'
+                    pass: process.env.pass,
                 }
             });
             var mailOptions = {
