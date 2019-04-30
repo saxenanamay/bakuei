@@ -322,7 +322,7 @@ app.post("/forgot",function(req,res){
             });
             var mailOptions= {
                 to: user.email,
-                from: 'hatofperfection@gmail.com',
+                from: 'Bakuei ✔ <hatofperfection@gmail.com>',
                 subject: 'bakuei password reset',
                 text: 'Follow this link to reset your password. It will expire within 1 hour.\n'+
                       'http://'+req.headers.host+'/reset/'+token+'\n\n'
