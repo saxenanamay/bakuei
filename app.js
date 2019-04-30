@@ -240,6 +240,21 @@ app.get("/register",function(req,res){
     res.render("register");
 });
 app.post("/register",function(req,res){
+    var captcha = req.body["g-recaptcha-response"];
+    if(!captcha) {
+        return res.redirect("/register");
+    }
+    var secretKey = "6LdN9qAUAAAAANsQkFKn5zPxH1ZOOwsS-CwORZGN";
+    //Verify Captcha URL
+    let verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
+
+    //Make request to verify URL
+    request.get(verifyURL, (err, response, body) => {
+        //if not successful
+        if(body.success !== undefined && !body.success) {
+            return res.redirect("/register");
+        }
+    })
     var newUser = new User({username: req.body.username, email: req.body.email});
     if(req.body.adminCode === 'zxcvbnm'){
         newUser.isAdmin = true;

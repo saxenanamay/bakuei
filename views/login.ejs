@@ -1,22 +1,14 @@
 <% include partials/header %>
 
-<canvas id="myCanvas" width="200" height="200"></canvas>
+<canvas id="myCanvas" width="800" height="800"></canvas>
 <div class="container text-center form-container">
         <h1>Login</h1>
-        <form action="/login" method="POST">
+        <form action="/login" method="POST" id="login-form">
             <input class="form-control login-field" type="text" name="username" placeholder="username">
             <input class="form-control login-field" type="password" name="password" placeholder="password">
             <button class="form-login-button">Login</button>
             <a href="forgot">Forgot Password?</a>
             <p style="margin-top: 10px">Don't have an account?<a href="register"> Register!</a></p>
-            <script src="https://www.google.com/recaptcha/api.js?render=6Lf19KAUAAAAAI_MGQOq6K1_7RWh1kaq2x3Kyj7p"></script>
-            <script>
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6Lf19KAUAAAAAI_MGQOq6K1_7RWh1kaq2x3Kyj7p', {action: 'homepage'}).then(function(token) {
-                   
-                });
-            });
-            </script>
         </form>
 </div>
 <% include partials/footer %>
