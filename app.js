@@ -478,19 +478,19 @@ app.get("/blogs",function(req,res){
             console.log(err);
         }
         else{
-            res.render("blog/index",{blog: blog});
+            res.render("blog/index",{blog: blog, user: req.user});
         }
     })
 });
-app.get("/blogs/new",function(req,res){
-    res.render("blog/new");
+app.get("/blogs/new",checkAdmin, function(req,res){
+    res.render("blog/new", {user: req.user});
 });
 
-app.post("/blogs", function(req,res){
+app.post("/blogs",checkAdmin, function(req,res){
     req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.create(req.body.blog, function(err, blog){
         if(err){
-            res.render("blog/new");
+            res.render("blog/new", {user: req.user});
         }
         else{
             res.redirect("/blogs");
@@ -504,23 +504,23 @@ app.get("/blogs/:id",function(req,res){
             res.redirect("/blogs");
         }
         else{
-            res.render("blog/show", {blog: blog});
+            res.render("blog/show", {blog: blog, user: req.user});
         }
     });
 });
 
-app.get("/blogs/:id/edit",function(req,res){
+app.get("/blogs/:id/edit",checkAdmin, function(req,res){
     Blog.findById(req.params.id, function(err, blog){
         if(err){
             res.send("ERROROROROR");
         }
         else{
-            res.render("blog/edit", {blog: blog});
+            res.render("blog/edit", {blog: blog, user: req.user});
         }
     });
 });
 
-app.put("/blogs/:id", function(req,res){
+app.put("/blogs/:id",checkAdmin,  function(req,res){
     req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, blog){
         if(err){
@@ -532,13 +532,13 @@ app.put("/blogs/:id", function(req,res){
     });
 });
 
-app.delete("/blogs/:id",function(req,res){
+app.delete("/blogs/:id",checkAdmin, function(req,res){
     Blog.findByIdAndRemove(req.params.id, function(err){
         if(err){
-            res.redirect("/blogs");
+            res.redirect("/blogs",{ user: req.user});
         }
         else{
-            res.redirect("/blogs");
+            res.redirect("/blogs",{ user: req.user});
         }
     })
 });
