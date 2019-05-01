@@ -470,6 +470,9 @@ app.delete("/index/:id/:cid", checkCommentOwner, function(req,res){
     })
 })
 
+app.get("/about", function(req,res){
+    res.render("about");
+});
 // BLOG
 
 app.get("/blogs",function(req,res){
