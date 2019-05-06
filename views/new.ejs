@@ -34,7 +34,7 @@
         </div>
         <script>
         $("#nname").on("keyup",function(){
-            jQuery.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+$("#nname").val()+"+"+$("#nlocation").val()+"&key=AIzaSyBdUIUKnJ9M2TArsF-xpiPutgwJPgHkqEE",function(a){
+            jQuery.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+$("#nname").val()+"+"+$("#nlocation").val()+"&key=AIzaSyAU756sWMN8Onzej1OPJSCqlwHGi6QYHnQ",function(a){
                 lat = a.results[0].geometry.location.lat;
                 long = a.results[0].geometry.location.lng;
                 $("#lat").val(lat);
@@ -42,7 +42,7 @@
             });
         });
         $("#nlocation").on("keyup",function(){
-            jQuery.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+$("#nname").val()+"+"+$("#nlocation").val()+"&key=AIzaSyBdUIUKnJ9M2TArsF-xpiPutgwJPgHkqEE",function(a){
+            jQuery.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+$("#nname").val()+"+"+$("#nlocation").val()+"&key=AIzaSyAU756sWMN8Onzej1OPJSCqlwHGi6QYHnQ",function(a){
                 lat = a.results[0].geometry.location.lat;
                 long = a.results[0].geometry.location.lng;
                 $("#lat").val(lat);
