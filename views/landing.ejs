@@ -29,7 +29,7 @@
                 <ul class="navigation__list">
                     <li class="navigation__item"><a href="/index" class="navigation__link"><span>01</span>User Experiences</a></li>
                     <li class="navigation__item"><a href="/events" class="navigation__link"><span>02</span>Book an adventure!</a></li>
-                    <li class="navigation__item"><a href="/blog" class="navigation__link"><span>03</span>Our Blog</a></li>
+                    <li class="navigation__item"><a href="/blogs" class="navigation__link"><span>03</span>Our Blog</a></li>
                     </ul>
             </nav>
         </div>
@@ -37,6 +37,7 @@
         <header class="header">
             <div class="header__logo-box">
                 <img src="img/logo-white.png" alt="Logo" class="header__logo">
+                BUKAI
             </div>
 
             <div class="header__text-box">
@@ -303,7 +304,7 @@
                 </div>
 
                 <div class="u-center-text u-margin-top-huge">
-                    <a href="blog" class="btn-text">Read all stories &rarr;</a>
+                    <a href="blogs" class="btn-text">Read all stories &rarr;</a>
                 </div>
             </section>
 
@@ -328,7 +329,7 @@
                                     <label for="email" class="form__label">Email address</label>
                                 </div>
 
-                                <div class="form__group u-margin-bottom-medium">
+                                <!-- <div class="form__group u-margin-bottom-medium">
                                     <div class="form__radio-group">
                                         <input type="radio" class="form__radio-input" id="small" name="size">
                                         <label for="small" class="form__radio-label">
@@ -344,14 +345,30 @@
                                             Large tour group
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form__group">
-                                    <button class="btn btn--green">Contact! &rarr;</button>
+                                    <button class="btn btn--green" id="myBtn">Contact! &rarr;</button>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="modal-overlay">
+                    <div class="modal">
+                          
+                        <a class="close-modal">
+                            <svg viewBox="0 0 20 20">
+                                <path fill="#000000" d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+                            </svg>
+                        </a><!-- close modal -->
+                      
+                        <div class="modal-content">
+                            <h1>Thanks for your interest!</h1>
+                            <h3>We have received your enquiry, and an executive will be assigned to accomodate you soon. We will connect them with you soon!</h3>
+                        </div><!-- content -->
+                          
+                    </div><!-- modal -->
                 </div>
             </section>
         </main>
@@ -373,7 +390,7 @@
                     <div class="footer__navigation">
                         <ul class="footer__list">
                             <li class="footer__item"><a href="#comehere" class="footer__link">Contact Us!</a></li>
-                            <li class="footer__item"><a href="/blog" class="footer__link">Blog</a></li>
+                            <li class="footer__item"><a href="/blogs" class="footer__link">Blog</a></li>
                             <li class="footer__item"><a href="/policy" class="footer__link">Privacy policy</a></li>
                             <li class="footer__item"><a href="/terms" class="footer__link">Terms</a></li>
                         </ul>
@@ -412,7 +429,7 @@ We may cancel your reservation at any time with immediate effect by giving you w
 
  
                     </p>
-                    <a href="#" class="btn btn--green">Book now</a>
+                    <a href="events" class="btn btn--green">Book now</a>
                 </div>
             </div>
         </div>
@@ -486,6 +503,21 @@ We may cancel your reservation at any time with immediate effect by giving you w
             </div>
         </section>
         -->
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+        <script>
+            var elements = $('.modal-overlay, .modal');
+
+            $('#myBtn').click(function(){
+                elements.addClass('active');
+            });
+
+            $('.close-modal').click(function(){
+                elements.removeClass('active');
+            });
+        </script>
 
     </body>
 </html>
